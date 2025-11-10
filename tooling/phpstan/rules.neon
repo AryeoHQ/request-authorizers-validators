@@ -1,0 +1,5 @@
+services:
+    -
+        class: Tooling\LaravelAuthorizerValidator\PHPStan\Rules\AuthorizerValidatorRule
+        tags:
+            - phpstan.rules.rule

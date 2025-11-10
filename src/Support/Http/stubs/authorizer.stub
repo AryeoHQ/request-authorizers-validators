@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DummyNamespace;
+
+use Support\Http\Authorizer as BaseAuthorizer;
+
+final class DummyClass extends BaseAuthorizer
+{
+    public function authorize(): bool
+    {
+        // Gate checks
+    }
+}
