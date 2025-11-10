@@ -3,7 +3,7 @@ This package provides the base for HTTP request authorizers and validators in La
 
 ## Installation
 ```bash
-composer require aryeo/laravel-authorizer-validator
+composer require aryeo/request-authorizers-validators
 ```
 
 ## Overview
