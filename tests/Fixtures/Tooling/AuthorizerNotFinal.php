@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures\Variations;
+namespace Tests\Fixtures\Tooling;
 
 use Support\Http\Authorizer as BaseAuthorizer;
 
-final class ValidAuthorizer extends BaseAuthorizer
+class AuthorizerNotFinal extends BaseAuthorizer
 {
     public function authorize(): bool
     {

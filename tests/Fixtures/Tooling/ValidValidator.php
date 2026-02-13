@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures\Variations;
+namespace Tests\Fixtures\Tooling;
 
 use Support\Http\Validator as BaseValidator;
 
-class ValidatorNotFinal extends BaseValidator
+final class ValidValidator extends BaseValidator
 {
     public function rules(): array
     {
