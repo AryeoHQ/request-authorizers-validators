@@ -7,6 +7,7 @@ namespace Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
+use PHPStan\Reflection\ReflectionProvider;
 use Support\Http\Validator;
 use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
 use Tooling\PhpStan\Rules\Rule;
@@ -16,23 +17,26 @@ use Tooling\Rules\Attributes\NodeType;
  * @extends Rule<Class_>
  */
 #[NodeType(Class_::class)]
-class MustHaveRulesMethod extends Rule
+class ValidatorsMustNotHaveAuthorizeMethod extends Rule
 {
     use ValidatesMethods;
 
+    public function __construct(
+        public ReflectionProvider $reflectionProvider,
+    ) {}
+
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inheritsDirectly($node, Validator::class);
+        return $this->inherits($node, Validator::class, $this->reflectionProvider)
+            && $this->hasMethod($node, 'authorize');
     }
 
     public function handle(Node $node, Scope $scope): void
     {
-        if (! $this->hasMethod($node, 'rules')) {
-            $this->error(
-                message: 'Validators must have a rules method.',
-                line: $node->name->getStartLine(),
-                identifier: 'validator.rules.method'
-            );
-        }
+        $this->error(
+            message: 'Validators must not have an authorize method.',
+            line: $node->name->getStartLine(),
+            identifier: 'validator.authorize.method'
+        );
     }
 }

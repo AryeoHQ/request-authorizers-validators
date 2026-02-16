@@ -2,23 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Tests\Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators;
+namespace Tests\Tooling\PhpStan\Rules\Validators;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\MustBeFinal;
+use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustBeFinal;
+use PHPStan\Reflection\ReflectionProvider;
 
-#[CoversClass(MustBeFinal::class)]
-final class MustBeFinalTest extends RuleTestCase
+#[CoversClass(ValidatorsMustBeFinal::class)]
+final class ValidatorsMustBeFinalTest extends RuleTestCase
 {
     use GetsFixtures;
 
     protected function getRule(): Rule
     {
-        return new MustBeFinal;
+        return new ValidatorsMustBeFinal(
+            self::getContainer()->getByType(ReflectionProvider::class)
+        );
     }
 
     #[Test]

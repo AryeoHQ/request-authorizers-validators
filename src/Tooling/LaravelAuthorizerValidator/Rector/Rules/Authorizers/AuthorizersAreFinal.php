@@ -9,7 +9,6 @@ use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use Support\Http\Authorizer;
 use Tooling\Rector\Rules\Definitions\Attributes\Definition;
-use Tooling\Rector\Rules\Provides\ValidatesInheritance;
 use Tooling\Rector\Rules\Rule;
 use Tooling\Rules\Attributes\NodeType;
 
@@ -20,11 +19,11 @@ use Tooling\Rules\Attributes\NodeType;
 #[NodeType(Class_::class)]
 final class AuthorizersAreFinal extends Rule
 {
-    use ValidatesInheritance;
-
     public function shouldHandle(Node $node): bool
     {
-        return $this->inheritsDirectly($node, Authorizer::class) && ! $node->isFinal();
+        return $this->inherits($node, Authorizer::class)
+            && ! $node->isFinal()
+            && ! $node->isAbstract();
     }
 
     public function handle(Node $node): Node

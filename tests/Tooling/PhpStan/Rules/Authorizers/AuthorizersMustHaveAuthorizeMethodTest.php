@@ -2,23 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Tests\Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers;
+namespace Tests\Tooling\PhpStan\Rules\Authorizers;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\MustHaveAuthorizeMethod;
+use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustHaveAuthorizeMethod;
+use PHPStan\Reflection\ReflectionProvider;
 
-#[CoversClass(MustHaveAuthorizeMethod::class)]
-final class MustHaveAuthorizeMethodTest extends RuleTestCase
+#[CoversClass(AuthorizersMustHaveAuthorizeMethod::class)]
+final class AuthorizersMustHaveAuthorizeMethodTest extends RuleTestCase
 {
     use GetsFixtures;
 
     protected function getRule(): Rule
     {
-        return new MustHaveAuthorizeMethod;
+        return new AuthorizersMustHaveAuthorizeMethod(
+            self::getContainer()->getByType(ReflectionProvider::class)
+        );
     }
 
     #[Test]

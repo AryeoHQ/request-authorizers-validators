@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers;
+namespace Tests\Tooling\Rector\Rules\Authorizers;
 
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tooling\Rector\Testing\ParsesNodes;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\Rector\Rules\Provides\ParsesNodes;
-use Tooling\Rector\Rules\Provides\ValidatesInheritance;
+use Tooling\Rector\Testing\ResolvesRectorRules;
 use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
 use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers\AuthorizersDoNotHaveRulesMethod;
 
@@ -18,13 +18,13 @@ final class AuthorizersDoNotHaveRulesMethodTest extends TestCase
 {
     use GetsFixtures;
     use ParsesNodes;
-    use ValidatesInheritance;
     use ValidatesMethods;
+    use ResolvesRectorRules;
 
     #[Test]
     public function it_can_remove_a_rules_method_from_an_authorizer(): void
     {
-        $rule = app(AuthorizersDoNotHaveRulesMethod::class);
+        $rule = $this->resolveRule(AuthorizersDoNotHaveRulesMethod::class);
 
         $classNode = $this->getClassNode($this->getFixturePath('AuthorizerWithRulesMethod.php'));
 
@@ -38,7 +38,7 @@ final class AuthorizersDoNotHaveRulesMethodTest extends TestCase
     #[Test]
     public function it_does_not_remove_a_rules_method_from_a_non_authorizer_class(): void
     {
-        $rule = app(AuthorizersDoNotHaveRulesMethod::class);
+        $rule = $this->resolveRule(AuthorizersDoNotHaveRulesMethod::class);
 
         $classNode = $this->getClassNode($this->getFixturePath('RegularClass.php'));
         

@@ -8,7 +8,6 @@ use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use Support\Http\Validator;
 use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
-use Tooling\Rector\Rules\Provides\ValidatesInheritance;
 use Tooling\Rector\Rules\Rule;
 use Tooling\Rules\Attributes\NodeType;
 
@@ -18,12 +17,11 @@ use Tooling\Rules\Attributes\NodeType;
 #[NodeType(Class_::class)]
 final class ValidatorsHaveRulesMethod extends Rule
 {
-    use ValidatesInheritance;
     use ValidatesMethods;
 
     public function shouldHandle(Node $node): bool
     {
-        return $this->inheritsDirectly($node, Validator::class)
+        return $this->inherits($node, Validator::class)
             && ! $this->hasMethod($node, 'rules');
     }
 
