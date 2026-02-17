@@ -21,7 +21,8 @@ class AuthorizersMustNotHaveRulesMethod extends Rule
     {
         return $this->inherits($node, Authorizer::class)
             && ! $node->isAbstract()
-            && $node->getMethod('rules') !== null;
+            && $node->getMethod('rules') !== null
+            && $this->hasMethod($node, 'rules');
     }
 
     public function handle(Node $node, Scope $scope): void
