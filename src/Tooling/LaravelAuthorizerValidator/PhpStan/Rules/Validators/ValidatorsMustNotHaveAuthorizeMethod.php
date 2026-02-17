@@ -21,7 +21,7 @@ class ValidatorsMustNotHaveAuthorizeMethod extends Rule
     {
         return $this->inherits($node, Validator::class)
             && ! $node->isAbstract()
-            && $this->hasMethod($node, 'authorize');
+            && $node->getMethod('authorize') !== null;
     }
 
     public function handle(Node $node, Scope $scope): void

@@ -9,4 +9,12 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class Authorizer extends FormRequest
 {
     abstract public function authorize(): bool;
+
+    /**
+     * @return array<string, mixed>
+     */
+    final public function rules(): array
+    {
+        return [];
+    }
 }

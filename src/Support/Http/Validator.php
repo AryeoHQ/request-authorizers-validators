@@ -12,4 +12,12 @@ abstract class Validator extends FormRequest
      * @return array<string, mixed>
      */
     abstract public function rules(): array;
+
+    /**
+     * @return true
+     */
+    final public function authorize(): bool
+    {
+        return true;
+    }
 }
