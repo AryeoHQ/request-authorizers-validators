@@ -20,6 +20,7 @@ class ValidatorsMustHaveRulesMethod extends Rule
     public function shouldHandle(Node $node, Scope $scope): bool
     {
         return $this->inherits($node, Validator::class)
+            && ! $node->isAbstract()
             && ! $this->hasMethod($node, 'rules');
     }
 

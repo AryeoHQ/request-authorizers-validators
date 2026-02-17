@@ -20,6 +20,7 @@ class AuthorizersMustNotHaveRulesMethod extends Rule
     public function shouldHandle(Node $node, Scope $scope): bool
     {
         return $this->inherits($node, Authorizer::class)
+            && ! $node->isAbstract()
             && $this->hasMethod($node, 'rules');
     }
 
