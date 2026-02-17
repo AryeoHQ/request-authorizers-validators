@@ -7,9 +7,7 @@ namespace Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
-use PHPStan\Reflection\ReflectionProvider;
 use Support\Http\Authorizer;
-use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
 use Tooling\PhpStan\Rules\Rule;
 use Tooling\Rules\Attributes\NodeType;
 
@@ -19,15 +17,9 @@ use Tooling\Rules\Attributes\NodeType;
 #[NodeType(Class_::class)]
 class AuthorizersMustNotHaveRulesMethod extends Rule
 {
-    use ValidatesMethods;
-
-    public function __construct(
-        public ReflectionProvider $reflectionProvider,
-    ) {}
-
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inherits($node, Authorizer::class, $this->reflectionProvider)
+        return $this->inherits($node, Authorizer::class)
             && $this->hasMethod($node, 'rules');
     }
 

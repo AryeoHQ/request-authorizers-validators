@@ -10,7 +10,6 @@ use PHPUnit\Framework\Attributes\Test;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustBeFinal;
-use PHPStan\Reflection\ReflectionProvider;
 
 #[CoversClass(ValidatorsMustBeFinal::class)]
 final class ValidatorsMustBeFinalTest extends RuleTestCase
@@ -19,9 +18,7 @@ final class ValidatorsMustBeFinalTest extends RuleTestCase
 
     protected function getRule(): Rule
     {
-        return new ValidatorsMustBeFinal(
-            self::getContainer()->getByType(ReflectionProvider::class)
-        );
+        return new ValidatorsMustBeFinal;
     }
 
     #[Test]

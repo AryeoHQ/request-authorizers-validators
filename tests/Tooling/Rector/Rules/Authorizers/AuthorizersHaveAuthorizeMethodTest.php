@@ -6,11 +6,11 @@ namespace Tests\Tooling\Rector\Rules\Authorizers;
 
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tooling\Rector\Testing\ParsesNodes;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\Rector\Testing\ParsesNodes;
 use Tooling\Rector\Testing\ResolvesRectorRules;
-use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
+use Tooling\Rector\Rules\Provides\ValidatesMethods;
 use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers\AuthorizersHaveAuthorizeMethod;
 
 #[CoversClass(AuthorizersHaveAuthorizeMethod::class)]

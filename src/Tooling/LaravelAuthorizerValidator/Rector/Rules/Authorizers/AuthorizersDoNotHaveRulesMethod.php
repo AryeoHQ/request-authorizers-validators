@@ -7,7 +7,6 @@ namespace Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use Support\Http\Authorizer;
-use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
 use Tooling\Rector\Rules\Rule;
 use Tooling\Rules\Attributes\NodeType;
 
@@ -17,8 +16,6 @@ use Tooling\Rules\Attributes\NodeType;
 #[NodeType(Class_::class)]
 final class AuthorizersDoNotHaveRulesMethod extends Rule
 {
-    use ValidatesMethods;
-
     public function shouldHandle(Node $node): bool
     {
         return $this->inherits($node, Authorizer::class)
@@ -27,7 +24,7 @@ final class AuthorizersDoNotHaveRulesMethod extends Rule
 
     public function handle(Node $node): Node
     {
-        $this->removeMethod($node, 'rules');
+        $this->ensureMethodIsNotDefined($node, 'rules');
 
         return $node;
     }

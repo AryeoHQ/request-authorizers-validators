@@ -10,7 +10,6 @@ use PHPUnit\Framework\Attributes\Test;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustBeFinal;
-use PHPStan\Reflection\ReflectionProvider;
 #[CoversClass(AuthorizersMustBeFinal::class)]
 final class AuthorizersMustBeFinalTest extends RuleTestCase
 {
@@ -18,9 +17,7 @@ final class AuthorizersMustBeFinalTest extends RuleTestCase
 
     protected function getRule(): Rule
     {
-        return new AuthorizersMustBeFinal(
-            self::getContainer()->getByType(ReflectionProvider::class)
-        );
+        return new AuthorizersMustBeFinal;
     }
 
     #[Test]

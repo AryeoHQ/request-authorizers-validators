@@ -6,13 +6,12 @@ namespace Tests\Tooling\Rector\Rules\Validators;
 
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tooling\Rector\Testing\ParsesNodes;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\Rector\Testing\ParsesNodes;
 use Tooling\Rector\Testing\ResolvesRectorRules;
-use Tooling\LaravelAuthorizerValidator\Concerns\ValidatesMethods;
+use Tooling\Rector\Rules\Provides\ValidatesMethods;
 use Tooling\LaravelAuthorizerValidator\Rector\Rules\Validators\ValidatorsHaveRulesMethod;
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers\AuthorizersHaveAuthorizeMethod;
 
 #[CoversClass(ValidatorsHaveRulesMethod::class)]
 final class ValidatorsHaveRulesMethodTest extends TestCase

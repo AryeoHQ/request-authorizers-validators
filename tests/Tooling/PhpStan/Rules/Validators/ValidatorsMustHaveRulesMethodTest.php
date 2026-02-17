@@ -10,7 +10,6 @@ use PHPUnit\Framework\Attributes\Test;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustHaveRulesMethod;
-use PHPStan\Reflection\ReflectionProvider;
 #[CoversClass(ValidatorsMustHaveRulesMethod::class)]
 final class ValidatorsMustHaveRulesMethodTest extends RuleTestCase
 {
@@ -18,9 +17,7 @@ final class ValidatorsMustHaveRulesMethodTest extends RuleTestCase
 
     protected function getRule(): Rule
     {
-        return new ValidatorsMustHaveRulesMethod(
-            self::getContainer()->getByType(ReflectionProvider::class)
-        );
+        return new ValidatorsMustHaveRulesMethod;
     }
 
     #[Test]

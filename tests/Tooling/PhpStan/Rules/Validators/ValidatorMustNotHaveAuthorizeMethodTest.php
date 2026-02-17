@@ -10,7 +10,6 @@ use PHPUnit\Framework\Attributes\Test;
 use Tests\Tooling\Concerns\GetsFixtures;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustNotHaveAuthorizeMethod;
-use PHPStan\Reflection\ReflectionProvider;
 
 #[CoversClass(ValidatorsMustNotHaveAuthorizeMethod::class)]
 final class ValidatorMustNotHaveAuthorizeMethodTest extends RuleTestCase
@@ -19,9 +18,7 @@ final class ValidatorMustNotHaveAuthorizeMethodTest extends RuleTestCase
 
     protected function getRule(): Rule
     {
-        return new ValidatorsMustNotHaveAuthorizeMethod(
-            self::getContainer()->getByType(ReflectionProvider::class)
-        );
+        return new ValidatorsMustNotHaveAuthorizeMethod;
     }
 
     #[Test]

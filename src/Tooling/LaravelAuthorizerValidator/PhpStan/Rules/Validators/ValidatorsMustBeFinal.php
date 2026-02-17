@@ -7,7 +7,6 @@ namespace Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
-use PHPStan\Reflection\ReflectionProvider;
 use Support\Http\Validator;
 use Tooling\PhpStan\Rules\Rule;
 use Tooling\Rules\Attributes\NodeType;
@@ -18,13 +17,9 @@ use Tooling\Rules\Attributes\NodeType;
 #[NodeType(Class_::class)]
 class ValidatorsMustBeFinal extends Rule
 {
-    public function __construct(
-        public ReflectionProvider $reflectionProvider,
-    ) {}
-
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inherits($node, Validator::class, $this->reflectionProvider)
+        return $this->inherits($node, Validator::class)
             && ! $node->isFinal()
             && ! $node->isAbstract();
     }
