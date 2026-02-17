@@ -1,5 +1,25 @@
 services:
     -
-        class: Tooling\LaravelAuthorizerValidator\PHPStan\Rules\AuthorizerValidatorRule
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustHaveRulesMethod
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustNotHaveAuthorizeMethod
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustBeFinal
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustHaveAuthorizeMethod
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustNotHaveRulesMethod
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustBeFinal
         tags:
             - phpstan.rules.rule
