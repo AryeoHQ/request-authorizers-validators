@@ -10,6 +10,7 @@ use PhpParser\Node\Stmt\Class_;
 use Support\Http\Authorizer;
 use Tooling\Rector\Rules\Definitions\Attributes\Definition;
 use Tooling\Rector\Rules\Rule;
+use Tooling\Rector\Rules\Samples\Attributes\Sample;
 use Tooling\Rules\Attributes\NodeType;
 
 /**
@@ -17,6 +18,7 @@ use Tooling\Rules\Attributes\NodeType;
  */
 #[Definition('Add final modifier to authorizer classes')]
 #[NodeType(Class_::class)]
+#[Sample('request-authorizers-validators.rector.rules.samples')]
 final class AuthorizersAreFinal extends Rule
 {
     public function shouldHandle(Node $node): bool

@@ -7,13 +7,17 @@ namespace Tooling\LaravelAuthorizerValidator\Rector\Rules\Validators;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use Support\Http\Validator;
+use Tooling\Rector\Rules\Definitions\Attributes\Definition;
 use Tooling\Rector\Rules\Rule;
+use Tooling\Rector\Rules\Samples\Attributes\Sample;
 use Tooling\Rules\Attributes\NodeType;
 
 /**
  * @extends Rule<Class_>
  */
+#[Definition('Remove authorize method from validator classes')]
 #[NodeType(Class_::class)]
+#[Sample('request-authorizers-validators.rector.rules.samples')]
 final class ValidatorsDoNotHaveAuthorizeMethod extends Rule
 {
     public function shouldHandle(Node $node): bool
@@ -24,7 +28,7 @@ final class ValidatorsDoNotHaveAuthorizeMethod extends Rule
 
     public function handle(Node $node): Node
     {
-        $this->ensureMethodIsNotDefined($node, 'authorize');
+        $this->removeMethod($node, 'authorize');
 
         return $node;
     }
