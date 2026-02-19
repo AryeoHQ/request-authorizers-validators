@@ -7,13 +7,17 @@ namespace Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use Support\Http\Authorizer;
+use Tooling\Rector\Rules\Definitions\Attributes\Definition;
 use Tooling\Rector\Rules\Rule;
+use Tooling\Rector\Rules\Samples\Attributes\Sample;
 use Tooling\Rules\Attributes\NodeType;
 
 /**
  * @extends Rule<Class_>
  */
+#[Definition('Add authorize method to authorizer classes')]
 #[NodeType(Class_::class)]
+#[Sample('request-authorizers-validators.rector.rules.samples')]
 final class AuthorizersHaveAuthorizeMethod extends Rule
 {
     public function shouldHandle(Node $node): bool
@@ -24,7 +28,7 @@ final class AuthorizersHaveAuthorizeMethod extends Rule
 
     public function handle(Node $node): Node
     {
-        $node->stmts[] = $this->ensureMethodIsDefined($node, 'authorize', 'bool');
+        $node->stmts[] = $this->addMethod($node, 'authorize', 'bool');
 
         return $node;
     }

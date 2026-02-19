@@ -11,7 +11,18 @@ use Support\Http\Commands\MakeValidator;
 
 class AuthorizerValidatorServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    public function register(): void
+    public function boot(): void
+    {
+        $this->bootCommands();
+        $this->bootViews();
+    }
+
+    protected function bootViews(): void
+    {
+        $this->loadViewsFrom(__DIR__.'/../../../../resources/views/rector/rules', 'request-authorizers-validators.rector.rules.samples');
+    }
+
+    protected function bootCommands(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
