@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3096b93d9f42c3f21daa2df1e70883e5",
+    "content-hash": "e42051c576191604a8f82b6bee74731b",
     "packages": [
         {
             "name": "brick/math",
@@ -5798,16 +5798,16 @@
     "packages-dev": [
         {
             "name": "aryeo/tooling-laravel",
-            "version": "dev-rule-consistency-and-feature-improvements",
+            "version": "0.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AryeoHQ/tooling-laravel.git",
-                "reference": "e1956b890cb110cb5b2f51583e3bf17c81ba06b2"
+                "reference": "8534f143634fb2c99a4fd72eebe47d47c5d0f702"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/e1956b890cb110cb5b2f51583e3bf17c81ba06b2",
-                "reference": "e1956b890cb110cb5b2f51583e3bf17c81ba06b2",
+                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/8534f143634fb2c99a4fd72eebe47d47c5d0f702",
+                "reference": "8534f143634fb2c99a4fd72eebe47d47c5d0f702",
                 "shasum": ""
             },
             "require": {
@@ -5876,10 +5876,10 @@
             ],
             "description": "Development tooling for Laravel",
             "support": {
-                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/rule-consistency-and-feature-improvements",
+                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.17",
                 "issues": "https://github.com/AryeoHQ/tooling-laravel/issues"
             },
-            "time": "2026-02-19T14:56:02+00:00"
+            "time": "2026-02-19T15:22:26+00:00"
         },
         {
             "name": "brianium/paratest",
@@ -10841,9 +10841,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "aryeo/tooling-laravel": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
