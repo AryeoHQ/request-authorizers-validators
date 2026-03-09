@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace DummyNamespace;
+namespace {{ namespace }};
 
 use Support\Http\Authorizer as BaseAuthorizer;
 
-final class DummyClass extends BaseAuthorizer
+final class {{ class }} extends BaseAuthorizer
 {
     public function authorize(): bool
     {
-        // Gate checks
+        return true;
     }
 }

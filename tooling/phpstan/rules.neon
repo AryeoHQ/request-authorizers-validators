@@ -1,25 +1,25 @@
 services:
     -
-        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustHaveRulesMethod
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\MustHaveRulesMethod
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustNotHaveAuthorizeMethod
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\MustNotHaveAuthorizeMethod
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\ValidatorsMustBeFinal
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\MustBeFinal
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustHaveAuthorizeMethod
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\MustHaveAuthorizeMethod
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustNotHaveRulesMethod
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\MustNotHaveRulesMethod
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\AuthorizersMustBeFinal
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Authorizers\MustBeFinal
         tags:
             - phpstan.rules.rule

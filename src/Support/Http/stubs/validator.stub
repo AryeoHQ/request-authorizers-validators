@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace DummyNamespace;
+namespace {{ namespace }};
 
 use Support\Http\Validator as BaseValidator;
 
-final class DummyClass extends BaseValidator
+final class {{ class }} extends BaseValidator
 {
     /**
      * @return array<string, mixed>

@@ -18,15 +18,16 @@
     ],
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^12.36"
+        "aryeo/tooling-laravel": "0.0.27",
+        "laravel/framework": "^12.36",
+        "nikic/php-parser": "^5.6",
+        "phpstan/phpstan": "^2.1",
+        "symfony/console": "^7.0"
     },
     "require-dev": {
-        "aryeo/tooling-laravel": "0.0.17",
         "brianium/paratest": "^7.14",
-        "nikic/php-parser": "^5.6",
         "orchestra/testbench": "^10.6",
         "orchestra/testbench-core": "^10.7",
-        "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^12",
         "rector/rector": "^2.2",
         "shipmonk/composer-dependency-analyser": "^1.8"
@@ -41,10 +42,16 @@
         "psr-4": {
             "Support\\": "src/Support/",
             "Tooling\\": "src/Tooling/"
-        }
+        },
+        "exclude-from-classmap": [
+            "*Test.php",
+            "*TestCases.php",
+            "/tests/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\": "vendor/orchestra/testbench-core/laravel/app/",
             "Tests\\": "tests/"
         }
     },
@@ -61,7 +68,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Support\\Http\\Providers\\AuthorizerValidatorServiceProvider"
+                "Support\\Http\\Providers\\Provider"
             ]
         },
         "tooling": {
