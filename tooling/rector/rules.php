@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Tooling\LaravelAuthorizerValidator\Rector\Rules;
 
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Validators\ValidatorsAreFinal;
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers\AuthorizersAreFinal;
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Validators\ValidatorsHaveRulesMethod;
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers\AuthorizersHaveAuthorizeMethod;
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers\AuthorizersDoNotHaveRulesMethod;
-use Tooling\LaravelAuthorizerValidator\Rector\Rules\Validators\ValidatorsDoNotHaveAuthorizeMethod;
+use Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers;
+use Tooling\LaravelAuthorizerValidator\Rector\Rules\Validators;
 
 return [
-    AuthorizersAreFinal::class,
-    AuthorizersDoNotHaveRulesMethod::class,
-    AuthorizersHaveAuthorizeMethod::class,
-    ValidatorsAreFinal::class,
-    ValidatorsDoNotHaveAuthorizeMethod::class,
-    ValidatorsHaveRulesMethod::class,
+    Authorizers\MustBeFinal::class,
+    Authorizers\MustHaveAuthorizeMethod::class,
+    Authorizers\MustNotHaveRulesMethod::class,
+    Validators\MustBeFinal::class,
+    Validators\MustHaveRulesMethod::class,
+    Validators\MustNotHaveAuthorizeMethod::class,
 ];

@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Tooling\LaravelAuthorizerValidator\Rector\Rules\Authorizers;
+
+use PhpParser\Node;
+use PhpParser\Node\Stmt\Class_;
+use Support\Http\Authorizer;
+use Tooling\Rector\Rules\Definitions\Attributes\Definition;
+use Tooling\Rector\Rules\Rule;
+use Tooling\Rector\Rules\Samples\Attributes\Sample;
+use Tooling\Rules\Attributes\NodeType;
+
+/**
+ * @extends Rule<Class_>
+ */
+#[Definition('Add authorize method to authorizer classes')]
+#[NodeType(Class_::class)]
+#[Sample('request-authorizers-validators.rector.rules.samples.authorizers')]
+final class MustHaveAuthorizeMethod extends Rule
+{
+    public function shouldHandle(Node $node): bool
+    {
+        return $this->inherits($node, Authorizer::class)
+            && ! $this->hasMethod($node, 'authorize');
+    }
+
+    public function handle(Node $node): Node
+    {
+        $node->stmts[] = $this->addMethod($node, 'authorize', 'bool');
+
+        return $node;
+    }
+}
