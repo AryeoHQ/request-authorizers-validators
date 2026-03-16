@@ -20,12 +20,12 @@ final class MakeValidatorTest extends TestCase
     use RetrievesNamespaceTestCases;
 
     public Validator $reference {
-        get => new Validator(name: 'TestValidator', baseNamespace: 'App');
+        get => new Validator(name: 'TestValidator', baseNamespace: 'Workbench\\App');
     }
 
     /** @var array<string, mixed> */
     public array $baselineInput {
-        get => ['name' => 'TestValidator', '--namespace' => 'App\\'];
+        get => ['name' => 'TestValidator', '--namespace' => 'Workbench\\App\\'];
     }
 
     /** @var array<string, mixed> */
@@ -35,7 +35,7 @@ final class MakeValidatorTest extends TestCase
 
     /** @var array<string, mixed> */
     public array $withoutNamespaceBackslashInput {
-        get => ['name' => 'TestValidator', '--namespace' => 'App'];
+        get => ['name' => 'TestValidator', '--namespace' => 'Workbench\\App'];
     }
 
     #[Test]
