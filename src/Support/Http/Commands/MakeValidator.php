@@ -33,10 +33,10 @@ class MakeValidator extends GeneratorCommand implements GeneratesFile
     }
 
     public Reference $reference {
-        get => $this->reference ??= new Validator(
-            name: $this->nameInput,
-            baseNamespace: $this->baseNamespace,
-        );
+        get => $this->reference ??= resolve(Validator::class, [
+            'name' => $this->nameInput,
+            'baseNamespace' => $this->baseNamespace,
+        ]);
     }
 
     public function handle(): null|bool

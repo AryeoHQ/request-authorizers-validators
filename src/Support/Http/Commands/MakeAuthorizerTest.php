@@ -20,12 +20,12 @@ final class MakeAuthorizerTest extends TestCase
     use RetrievesNamespaceTestCases;
 
     public Authorizer $reference {
-        get => new Authorizer(name: 'TestAuthorizer', baseNamespace: 'App');
+        get => new Authorizer(name: 'TestAuthorizer', baseNamespace: 'Workbench\\App');
     }
 
     /** @var array<string, mixed> */
     public array $baselineInput {
-        get => ['name' => 'TestAuthorizer', '--namespace' => 'App\\'];
+        get => ['name' => 'TestAuthorizer', '--namespace' => 'Workbench\\App\\'];
     }
 
     /** @var array<string, mixed> */
@@ -35,7 +35,7 @@ final class MakeAuthorizerTest extends TestCase
 
     /** @var array<string, mixed> */
     public array $withoutNamespaceBackslashInput {
-        get => ['name' => 'TestAuthorizer', '--namespace' => 'App'];
+        get => ['name' => 'TestAuthorizer', '--namespace' => 'Workbench\\App'];
     }
 
     #[Test]

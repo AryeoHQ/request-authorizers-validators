@@ -33,10 +33,10 @@ class MakeAuthorizer extends GeneratorCommand implements GeneratesFile
     }
 
     public Reference $reference {
-        get => $this->reference ??= new Authorizer(
-            name: $this->nameInput,
-            baseNamespace: $this->baseNamespace,
-        );
+        get => $this->reference ??= resolve(Authorizer::class, [
+            'name' => $this->nameInput,
+            'baseNamespace' => $this->baseNamespace,
+        ]);
     }
 
     public function handle(): null|bool

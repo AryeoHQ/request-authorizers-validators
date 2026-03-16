@@ -8,3 +8,7 @@ devbox.d/
 .phpunit.cache
 .DS_Store
 tests/coverage
+workbench/*
+!workbench/app
+workbench/app/*
+!workbench/app/.gitkeep
