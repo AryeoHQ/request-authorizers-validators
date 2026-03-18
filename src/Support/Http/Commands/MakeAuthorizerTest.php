@@ -8,6 +8,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Support\Http\Commands\References\Authorizer;
 use Tests\TestCase;
+use Tooling\GeneratorCommands\References\Contracts\Reference;
 use Tooling\GeneratorCommands\Testing\Concerns\CleansUpGeneratorCommands;
 use Tooling\GeneratorCommands\Testing\Concerns\GeneratesFileTestCases;
 use Tooling\GeneratorCommands\Testing\Concerns\RetrievesNamespaceTestCases;
@@ -23,6 +24,10 @@ final class MakeAuthorizerTest extends TestCase
         get => new Authorizer(name: 'TestAuthorizer', baseNamespace: 'Workbench\\App');
     }
 
+    private Reference $nestedReference {
+        get => new Authorizer(name: 'TestAuthorizer', baseNamespace: 'Workbench\\App\\Nested\\Deeper');
+    }
+
     /** @var array<string, mixed> */
     public array $baselineInput {
         get => ['name' => 'TestAuthorizer', '--namespace' => 'Workbench\\App\\'];
@@ -36,6 +41,15 @@ final class MakeAuthorizerTest extends TestCase
     /** @var array<string, mixed> */
     public array $withoutNamespaceBackslashInput {
         get => ['name' => 'TestAuthorizer', '--namespace' => 'Workbench\\App'];
+    }
+
+    /** @var array<string, mixed> */
+    public array $withNestedNamespaceInput {
+        get => ['name' => 'TestAuthorizer', '--namespace' => 'Workbench\\App\\Nested\\Deeper'];
+    }
+
+    protected string $expectedNestedFilePath {
+        get => $this->nestedReference->filePath->toString();
     }
 
     #[Test]
