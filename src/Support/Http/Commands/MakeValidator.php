@@ -8,6 +8,7 @@ use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Stringable;
 use Support\Http\Commands\References\Validator;
 use Symfony\Component\Console\Input\InputOption;
+use Tooling\GeneratorCommands\Concerns\CreatesColocatedTests;
 use Tooling\GeneratorCommands\Concerns\GeneratorCommandCompatibility;
 use Tooling\GeneratorCommands\Concerns\RetrievesNamespace;
 use Tooling\GeneratorCommands\Contracts\GeneratesFile;
@@ -15,6 +16,7 @@ use Tooling\GeneratorCommands\References\Contracts\Reference;
 
 class MakeValidator extends GeneratorCommand implements GeneratesFile
 {
+    use CreatesColocatedTests;
     use GeneratorCommandCompatibility;
     use RetrievesNamespace;
 
