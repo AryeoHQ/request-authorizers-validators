@@ -26,10 +26,6 @@ class MakeAuthorizer extends GeneratorCommand implements GeneratesFile
 
     protected $type = 'Authorizer';
 
-    public string $stub {
-        get => __DIR__.'/../stubs/authorizer.stub';
-    }
-
     public Stringable $nameInput {
         get => $this->nameInput ??= str($this->argument('name'));
     }

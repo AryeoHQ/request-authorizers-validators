@@ -26,10 +26,6 @@ class MakeValidator extends GeneratorCommand implements GeneratesFile
 
     protected $type = 'Validator';
 
-    public string $stub {
-        get => __DIR__.'/../stubs/validator.stub';
-    }
-
     public Stringable $nameInput {
         get => $this->nameInput ??= str($this->argument('name'));
     }
