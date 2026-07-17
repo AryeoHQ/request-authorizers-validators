@@ -1,5 +1,9 @@
 services:
     -
+        class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Controllers\AuthorizersMustPrecedeValidators
+        tags:
+            - phpstan.rules.rule
+    -
         class: Tooling\LaravelAuthorizerValidator\PhpStan\Rules\Validators\MustHaveRulesMethod
         tags:
             - phpstan.rules.rule

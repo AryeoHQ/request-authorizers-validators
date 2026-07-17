@@ -20,6 +20,7 @@ class Provider extends ServiceProvider implements DeferrableProvider
     protected function bootViews(): void
     {
         $this->loadViewsFrom(__DIR__.'/../../../../resources/views/rector/rules/authorizers', 'request-authorizers-validators.rector.rules.samples.authorizers');
+        $this->loadViewsFrom(__DIR__.'/../../../../resources/views/rector/rules/controllers', 'request-authorizers-validators.rector.rules.samples.controllers');
         $this->loadViewsFrom(__DIR__.'/../../../../resources/views/rector/rules/validators', 'request-authorizers-validators.rector.rules.samples.validators');
     }
 
