@@ -42,7 +42,7 @@ class AuthorizersMustPrecedeValidators extends Rule
         );
     }
 
-    private function violatingAuthorizer(ClassMethod $method, Scope $scope): ?Param
+    private function violatingAuthorizer(ClassMethod $method, Scope $scope): null|Param
     {
         $validatorSeen = false;
 
@@ -61,7 +61,7 @@ class AuthorizersMustPrecedeValidators extends Rule
         return null;
     }
 
-    private function requestParameterType(Param $param, Scope $scope): ?string
+    private function requestParameterType(Param $param, Scope $scope): null|string
     {
         $type = $this->namedType($param->type);
 
@@ -82,7 +82,7 @@ class AuthorizersMustPrecedeValidators extends Rule
         return null;
     }
 
-    private function namedType(?Node $type): ?Name
+    private function namedType(null|Node $type): null|Name
     {
         if ($type instanceof NullableType) {
             return $this->namedType($type->type);
